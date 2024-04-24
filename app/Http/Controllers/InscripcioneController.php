@@ -88,7 +88,7 @@ class InscripcioneController extends Controller
         ]);
     
         // Redireccionar a alguna vista después de crear la inscripción
-        return redirect()->route('inscripciones.index')->with('success', 'Inscripción creada exitosamente.');
+        return redirect()->route('inscripciones.index');
     }
     
 
