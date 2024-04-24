@@ -11,9 +11,18 @@ class Webitem extends Model
 
     protected $guarded = [];
     protected $fillable = [
-        'text',
-        'image',
-        'eslider',
+        'text1',
+        'text2',
+        'text3',
+        'text4',
+        'image1',
+        'image2',
+        'image3',
+        'image4',
+        'eslider1',
+        'eslider2',
+        'eslider3',
+        'eslider4',
         'webcategoria_id',
     ];
     public function webcategoria()

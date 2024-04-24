@@ -16,13 +16,13 @@ defineProps({
 <template>
     <AppLayout title="Profile">
         <template #header>
-            <h2 class="font-semibold text-2xl   mt-12  text-green-600 leading-tight">
-                PERFIL
-            </h2>
+            <h2 class="font-semibold text-lg uppercase text-green-600 leading-tight">
+                PERFIL -{{ $page.props.auth.user.name }}
+            </h2><br><hr>
         </template>
 
         <div>
-            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                     <UpdateProfileInformationForm :user="$page.props.auth.user" />
 

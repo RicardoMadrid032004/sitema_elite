@@ -10,5 +10,9 @@ class Webcategoria extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function webitems()
+    {
+        return $this->hasMany(Webitem::class);
+    }
    
 }

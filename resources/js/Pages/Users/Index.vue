@@ -1,7 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import Modal from '@/Components/Modal.vue';
+import ModalResponsive from '@/Components/Modal.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
@@ -93,81 +93,83 @@ const deleteUser = (id,name) => {
 
 </script>
 <template>
-    <AppLayout title="Usuarios">
+    <AppLayout title="Usuarios" >
         <template #header>
-            Users
+            <h2 class="font-semibold text-md text-gray-800 leading-tight">
+               LISTA DE USUARIOS
+            </h2><br><hr>
         </template>
 
-        <div class="py-2 md:py-4 min-h-[calc(100vh-185px)] overflow-auto">
-            <div class="h-full mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="p-6 bg-white border-gray-100 rounded-lg ">
-                    <div class="flex flex-wrap gap-2 justify-between" >
-                        <PrimaryButton  @click="$event => openModal(1)" v-if="$page.props.user.permissions.includes('create user')">
-                            <i class="fa-solid  fa-plus-circle mx-2"></i>Registrar Usuario
-                        </PrimaryButton>
-                    </div>
-                    <div class="mt-4 overflow-auto">
-                        <div class="relative overflow-x-auto sm:rounded-lg ">
-                            <table class="w-full text-sm text-left rtl:text-right text-gray-400 dark:text-gray-900">
-                                <thead class="text-xs text-white uppercase bg-green-600 dark:bg-green-600">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">#</th>
-                                        <th scope="col" class="px-6 py-3">nombre</th>
-                                        <th scope="col" class="text-right px-6 py-3">email</th>
-                                        <th scope="col" class="text-right px-6 py-3">rol</th>
-                                        <th scope="col" class="text-right px-6 py-3">acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(user, i) in users.data" :key="user.id">
-                                        <td class="border border-gray-400 px-2 py-2">{{ i + 1 }}</td>
+        <div class="flex justify-center  ">
+            <div class="py-2 md:py-4 min-h-[calc(100vh-185px)] overflow-auto container items-center">
+                <div class="h-full mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="p-6 bg-white border-gray-100 shadow-2xl rounded-lg">
+                        <div class="flex flex-wrap gap-2 justify-between">
+                            <PrimaryButton @click="$event => openModal(1)" v-if="$page.props.user.permissions.includes('create user')">
+                                <i class="fa-solid  fa-plus-circle mx-1"></i>R-Usuario
+                            </PrimaryButton>
+                        </div>
+                        <div class="mt-4 overflow-auto">
+                            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-400 dark:text-gray-900">
+                                    <thead class="text-xs text-white text-center uppercase bg-green-600 dark:bg-green-600">
+                                        <tr>
+                                        <th scope="col" class="px-6 py-2">#</th>
+                                        <th scope="col" class="px-6 py-2">nombre</th>
+                                        <th scope="col" class="px-6 py-2">email</th>
+                                        <th scope="col" class="px-6 py-2">rol</th>
+                                        <th scope="col" class="px-6 py-2">acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center text-xs">
+                                        <tr v-for="(user, i) in users.data" :key="user.id">
+                                        <td class="border  border-gray-400 px-2 py-2">{{ i + 1 }}</td>
                                         <td class="border border-gray-400 px-2 py-2"> {{ user.name }}</td>
                                         <td class="border border-gray-400 px-2 py-2"> {{ user.email }}</td>
                                         <td class="border border-gray-400 px-2 py-2"> {{ user.email }}</td>
                                         <td class="border border-gray-400 px-2 py-2">
-                                            <PrimaryButton @click="$event => openModal(2,user.name,user.email,user.password,user.id)"  v-if="$page.props.user.permissions.includes('update user')">
-                                                <i class="fa-solid fa-edit fa-sm"></i>
+                                            <PrimaryButton @click="$event => openModal(2,user.name,user.email,user.password,user.id)" v-if="$page.props.user.permissions.includes('update user')">
+                                            <i class="fa-solid fa-edit fa-sm"></i>
                                             </PrimaryButton>
-                                            <DangerButton @click="$event => deleteUser(user.id,user.name)" class="ml-3"  v-if="$page.props.user.permissions.includes('delete user')">
-                                                <i class="fa-solid fa-trash mr-1 fa-sm"></i>
+                                            <DangerButton @click="$event => deleteUser(user.id,user.name)" class="ml-3" v-if="$page.props.user.permissions.includes('delete user')">
+                                            <i class="fa-solid fa-trash mr-1 fa-sm"></i>
                                             </DangerButton>
                                         </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="flex flex-col items-center border-t bg-white px-5 py-5 xs:flex-row xs:justify-between">
-                                <pagination :links="users.links" />
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- <div class="bg-white grid v-screen place-items-center mt-4">
+                                    <vueTailwindPaginationUmd
+                                        :current="users.currentPage" :total="users.total"
+                                        :per-page="users.perPage"
+                                        @page-changed="$event => onPageClick($event)"
+                                    ></vueTailwindPaginationUmd>
+                                    </div> -->
                             </div>
-                            <div class="bg-white grid v-screen place-items-center">
-                            <vueTailwindPaginationUmd
-                            :current="users.currentPage" :total="users.total"
-                            :per-page="users.perPage"
-                            @page-changed="$event => onPageClick($event)"
-                            ></vueTailwindPaginationUmd>
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <Modal :show="modal" @close="closeModal">
-            <div class="p-4 uppercase  mt-5 ">
-                <h2 class="text-2xl font-bold text-center text-gray-900 mb-4">{{ title }}</h2><hr>
+
+        <ModalResponsive :show="modal" @close="closeModal">
+            <div class="p-4 uppercase  mt-2 ">
+                <h2 class="text-md font-bold text-center text-gray-600 mb-2">{{ title }}</h2>
                 <div class="p-3 ">
-                    <InputLabel for="name" value="Name:" class="mb-2"></InputLabel>
-                    <TextInput id="name" ref="nameInput" v-model="form.name" type="text" class="w-full"
+                    <InputLabel for="name" value="Name:" class="mb-2 text-xs"></InputLabel>
+                    <TextInput id="name" ref="nameInput" v-model="form.name" type="text" class="w-full text-xs"
                         placeholder="escribe un nombre "></TextInput>
                     <InputError :message="form.errors.name" class="mt-2"></InputError>
                 </div>
                 <div class="p-3 ">
-                    <InputLabel for="email" value="email:" class="mb-2"></InputLabel>
-                    <TextInput id="email" ref="nameInput" v-model="form.email" type="email" class="w-full"
+                    <InputLabel for="email" value="email:" class="mb-2 text-xs"></InputLabel>
+                    <TextInput id="email" ref="nameInput" v-model="form.email" type="email" class="w-full text-xs"
                         placeholder="escribe un email "></TextInput>
                     <InputError :message="form.errors.email" class="mt-2"></InputError>
                 </div>
                 <div class="p-3 ">
-                    <InputLabel for="password" value="password:" class="mb-2"></InputLabel>
-                    <TextInput id="password" ref="nameInput" v-model="form.password" type="password" class="w-full"
+                    <InputLabel for="password" value="password:" class="mb-2 text-xs"></InputLabel>
+                    <TextInput id="password" ref="nameInput" v-model="form.password" type="password" class="w-full text-xs"
                         placeholder="escribe un contraseña "></TextInput>
                     <InputError :message="form.errors.password" class="mt-2"></InputError>
                 </div>
@@ -181,6 +183,6 @@ const deleteUser = (id,name) => {
                     </DangerButton>
                 </div>
             </div>
-        </Modal>
+        </ModalResponsive>
     </AppLayout>
 </template>

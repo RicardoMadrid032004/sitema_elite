@@ -11,6 +11,7 @@ export default {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
     ],
+    darkMode: 'class',
 
     theme: {
         extend: {
@@ -21,4 +22,5 @@ export default {
     },
 
     plugins: [forms, typography],
+    
 };

@@ -1,15 +1,15 @@
 <script setup>
 import WelcomeLayout from '@/Layouts/WelcomeLayout.vue';
 import Footter from '@/Components/Footter.vue';
+import { Link, usePage } from '@inertiajs/vue3';
 
 </script>
 
 <template>
     <div>
         <WelcomeLayout title="Profile">
-            <br><br><br>
             <div>
-                <div class="w-full  h-1/2"><br><br>
+                <div class="w-full  h-1/2">
                     <img class="w-full h-full object-cover" src="/logo/sevi.png" style="height: auto; height: auto;">
                 </div>
            </div>
@@ -70,7 +70,8 @@ import Footter from '@/Components/Footter.vue';
                                 <img src="/logo/piep.png" alt="Logo Elite" class="w-full h-full object-cover" style="height: auto; height: auto;" />
                             </a>
                         </div>
-                        <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 uppercase rounded mt-4 block">¿Quiénes SOMOS?</a>
+                     
+                        <Link :href="route('elite')" class="bg-green-500 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 uppercase rounded-2xl mt-4 block">¿Quiénes SOMOS?</Link>
                     </div>
                     <div class="text-center">
                         <h2 class="text-2xl md:text-3xl font-semibold">ELITE</h2>

@@ -8,7 +8,7 @@ const props = defineProps({
     },
     maxWidth: {
         type: String,
-        default: '2xl',
+        default: 'lg',
     },
     closeable: {
         type: Boolean,
@@ -65,7 +65,7 @@ const maxWidthClass = computed(() => {
 </script>
 
 <template>
-    <dialog class="z-50 m-0 min-h-full min-w-full overflow-y-auto bg-transparent backdrop:bg-transparent" ref="dialog">
+    <dialog class="z-50 m-0 min-h-full text-dark min-w-full overflow-y-auto bg-transparent backdrop:bg-transparent" ref="dialog">
         <div class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50" scroll-region>
             <transition
                 enter-active-class="ease-out duration-300"
@@ -88,7 +88,7 @@ const maxWidthClass = computed(() => {
                 leave-from-class="opacity-100 translate-y-0 sm:scale-100"
                 leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-                <div v-show="show" class="mb-6  bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto" :class="maxWidthClass">
+                <div v-show="show" class="mb-6  bg-white text-dark  rounded-lg overflow-hidden text-sm shadow-xl transform transition-all sm:w-full sm:mx-auto max-h-[90vh] overflow-y-auto" :class="maxWidthClass">
                     <slot v-if="showSlot"/>
                 </div>
             </transition>

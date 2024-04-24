@@ -2,27 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Webcategoria;
 use App\Models\Webitem;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class StoreController extends Controller
 {
     
+   
     public function welcome()
     {
-        
-         // Obtener el registro con ID 1
-        $registro = Webitem::find(1);
-
-        // Verificar si se encontró el registro
-        if ($registro) {
-            // Pasar el texto del registro a la vista
-            return view('Welcome', ['textoDesdeBD' => $registro->text]);
-        } else {
-            // En caso de que no se encuentre el registro, pasa un valor predeterminado o maneja el caso según tus necesidades
-            return view('Welcome', ['textoDesdeBD' => 'Texto no encontrado']);
-        }
+        $webcategorias = Webcategoria::with('webitems')->get();
+        return Inertia::render('Welcome', [
+            'webcategorias' => $webcategorias,
+        ]);
+      
     }
+
 
     public function elite($slug)
     {

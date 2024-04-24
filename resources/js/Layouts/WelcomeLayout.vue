@@ -39,15 +39,15 @@ const showingNavigationDropdown = ref(false);
 
 
 <template>
-    <div>
+    <div >
         <Head :title="title" />
 
         <Banner />
 
         <div class="min-h-screen bg-gray-100">
-            <nav  class="bg-black border-b border-gray-100 fixed w-full">
+            <nav  class="bg-black border-b border-gray-100 w-full">
                 <!-- Primary Navigation Menu -->
-                    <div class="max-w-7xl  mx-auto px-4 sm:px-12 lg:px-12">
+                <div class="max-w-7xl  mx-auto px-4 sm:px-12 lg:px-12">
                         <div class="items-center md:mx-12 md:px-12">
                             <img class="text-center"src="/logo/encabezado.png" alt="Logo" style="width: auto; height:auto;">
                         </div>
@@ -122,7 +122,7 @@ const showingNavigationDropdown = ref(false);
                                         </Link>
                                     </NavInicio>
                                     </div>
-
+<!-- 
                                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                     <NavInicio
                                         v-if="canRegister"
@@ -130,7 +130,7 @@ const showingNavigationDropdown = ref(false);
                                     >
                                         Registrate
                                     </NavInicio>
-                                    </div>
+                                    </div> -->
                                 </template>
                             </div>
                             <!-- <div class="shrink-0 flex items-center">
@@ -174,20 +174,45 @@ const showingNavigationDropdown = ref(false);
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink >
-                            Dashboard
+                        <ResponsiveNavLink  :href="route('dashboard')" >
+                            SISTEMA
                         </ResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('login')">
-                            Log in
+                            ACCEDE
                         </ResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('Welcome')">
+                            INICIO
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('elite')">
+                            ELITE
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('regalos')">
+                            REGALOS
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('eventos')">
+                           EVENTOS
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('galeria')">
+                            GALERIA
+                        </ResponsiveNavLink>
+                    </div>
+                    <!-- <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink v-if="canRegister" :href="route('register')">
                             Register
                         </ResponsiveNavLink>
-                    </div>
+                    </div> -->
 
                     <!-- Responsive Settings Options -->
     

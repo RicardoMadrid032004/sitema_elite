@@ -57,7 +57,6 @@ const submit = () => {
                 />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
-
             <div class="mt-4">
                 <InputLabel for="password" value="CONTRASEÑA" class="text-green-500 py-2" />
                 <TextInput
@@ -92,9 +91,9 @@ const submit = () => {
                 <Link :href="route('Welcome')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Regresar
                 </Link>
-                <Link :href="route('register')" class="underline ml-2 text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <!-- <Link :href="route('register')" class="underline ml-2 text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Registrate?
-                </Link>
+                </Link> -->
             </div>
         </form>
     </AuthenticationCard>
